@@ -36,9 +36,9 @@ Modalités / Restrictions :
 - Votre code sera structuré
 - Le jeu devra être fonctionnel
 - Les ressources seront disponibles dans un dossier images
-  o La font sera Lato (google font) : <https://fonts.google.com/specimen/>
+    - La font sera Lato (google font) : <https://fonts.google.com/specimen/>
   Lato
-  o Le Framework CSS de votre choix
+    - Le Framework CSS de votre choix
 
 ## Barème et critères d’évaluation
 
