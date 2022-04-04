@@ -20,6 +20,7 @@ h1 {
 }
 h2 {
  font-size: 2.5em;
+ font-weight: 100;
 }
 p {
   margin: 0;
@@ -76,6 +77,9 @@ button {
 }
 .actions {
 margin: 2em auto;
+}
+.bold {
+  font-weight: 300;
 }
 
 @media screen and (min-width: 48em) {

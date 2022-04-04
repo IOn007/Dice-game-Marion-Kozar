@@ -19,8 +19,8 @@ function handleNewGame(event) {
     document.getElementById('globalPlayer1').innerHTML = globalPlayer1;
     document.getElementById('globalPlayer2').innerHTML = globalPlayer2;
 
-    // on ajoute la classe active sur le joueur 1 qui joue en premier
-    document.getElementById('player1').className = 'active';
+    // // on ajoute la classe active sur le joueur 1 qui joue en premier
+    // document.getElementById('player1').className = 'active';
   }
 }
 
@@ -31,9 +31,44 @@ function rollDice(min, max) {
   return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
+// Fonction pour changer de joueur
+function switchPlayer() {
+  switch (currentPlayer) {
+    case 1:
+      // on vide le score round
+      roundPlayer1 = 0;
+      document.getElementById('roundPlayer1').innerHTML = roundPlayer1;
+      // on retire la classe bold au joueur 1
+      document.getElementById('p1').className = '';
+      // on retire la puce rouge au joueur 1
+      document.getElementById('player1').className = '';
+      // on passe la main au joueur 2
+       // on passe le h2 en gras
+      document.getElementById('p2').className = 'bold';
+      // on ajoute la puce rouge pour l'affordance
+      document.getElementById('player2').className = 'active';
+      currentPlayer = 2;
+      break;
+    case 2:
+      // on vide le score round
+      roundPlayer2 = 0;
+      document.getElementById('roundPlayer2').innerHTML = roundPlayer2;
+       // on retire la classe bold au joueur 1
+       document.getElementById('p2').className = '';
+       // on retire la puce rouge au joueur 1
+       document.getElementById('player2').className = '';
+       // on passe la main au joueur 1
+      // on passe le h1 en gras
+      document.getElementById('p1').className = 'bold';
+      // on ajoute la puce rouge pour l'affordance
+      document.getElementById('player1').className = 'active';
+      currentPlayer = 1;
+      break;
+  }
+}
 // Au clic sur roll lance le dé et stocke le resultat entre 1 et 6
 function handleRollDice(event) {
-  //  Le joueur 1 commence
+  //  Si le joueur clique sur le bouton roll dice
   if (event.currentTarget.id === 'roll') {
     // peut lancer le dé 
     let dice = Number(rollDice(1,6));
@@ -45,34 +80,7 @@ function handleRollDice(event) {
     console.log(diceImage.src);
     // Si dice = 1
     if (dice === 1){
-      switch (currentPlayer) {
-        case 1:
-          // on vide le score round
-          roundPlayer1 = 0;
-          document.getElementById('roundPlayer1').innerHTML = roundPlayer1;
-          // on passe la main au joueur 2
-          // on retire la classe active sur le joueur 1 qui joue en premier
-          document.getElementById('player1').className = '';
-          // on ajoute la classe active sur le joueur 2 qui joue en premier
-          document.getElementById('player2').className = 'active';
-          break;
-        case 2:
-          // on vide le score round
-          roundPlayer2 = 0;
-          document.getElementById('roundPlayer2').innerHTML = roundPlayer2;
-          // on passe la main au joueur 2
-          // on retire la classe active sur le joueur 1 qui joue en premier
-          document.getElementById('player2').className = '';
-          // on ajoute la classe active sur le joueur 2 qui joue en premier
-          document.getElementById('player1').className = 'active';
-          break;
-      }
-      // On change de joueur
-      if (currentPlayer === 1) {
-        currentPlayer = 2;
-      } else {
-        currentPlayer = 1;
-      }
+      switchPlayer();
       console.log("joueur qui joue : " + currentPlayer);
     }
     else {
@@ -93,10 +101,43 @@ function handleRollDice(event) {
     }
   }
 }
-
+// Au clic sur hold sauve le score dans global
+function handleHold(event) {
+  //  Si le joueur clique sur le bouton hold
+  if (event.currentTarget.id === 'hold') {
+    if (globalPlayer1 < 100 && globalPlayer2 < 100) {
+      // en fonction du joueur
+      switch (currentPlayer) {
+        case 1:
+          //on incrémente le score round à global du player 1
+          globalPlayer1 += roundPlayer1;
+          console.log("ceci est le score global incrémenté du joueur 1: " + globalPlayer1);
+          document.getElementById('globalPlayer1').innerHTML = globalPlayer1;
+          if (globalPlayer1 >= 100){
+            alert('Congrats ! Player 1 wins 🏆');}
+          break;
+        case 2:
+        //on incrémente le score round à global du player 2
+          globalPlayer2 += roundPlayer2;
+          console.log("ceci est le score global incrémenté du joueur 1: " + globalPlayer2);
+          document.getElementById('globalPlayer2').innerHTML = globalPlayer2;
+          if (globalPlayer2 >= 100){
+            alert('Congrats ! Player 2 wins 🏆');
+          }
+          break;
+      }
+      // On change de joueur
+      switchPlayer();
+    } else if (globalPlayer1 >= 100){
+      alert('Congrats ! Player 1 wins 🏆');
+    } else if (globalPlayer2 >= 100){
+      alert('Congrats ! Player 2 wins 🏆');
+    }
+  }  
+}
 document.getElementById('newGame').addEventListener('click', handleNewGame);
 document.getElementById('roll').addEventListener('click', handleRollDice);
-
+document.getElementById('hold').addEventListener('click', handleHold);
 
 
 
