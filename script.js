@@ -18,9 +18,6 @@ function handleNewGame(event) {
     globalPlayer2 = 0;   
     document.getElementById('globalPlayer1').innerHTML = globalPlayer1;
     document.getElementById('globalPlayer2').innerHTML = globalPlayer2;
-
-    // // on ajoute la classe active sur le joueur 1 qui joue en premier
-    // document.getElementById('player1').className = 'active';
   }
 }
 
@@ -72,12 +69,12 @@ function handleRollDice(event) {
   if (event.currentTarget.id === 'roll') {
     // peut lancer le dé 
     let dice = Number(rollDice(1,6));
-    console.log("ceci est dé" + dice);
+    // console.log("ceci est le dé " + dice);
 
     // on affiche l'image du dé correspondant au tirage au sort
     let diceImage = document.getElementById('dice');
     diceImage.src = "img/dice" + dice + ".svg";
-    console.log(diceImage.src);
+    // console.log(diceImage.src);
     // Si dice = 1
     if (dice === 1){
       switchPlayer();
@@ -85,12 +82,14 @@ function handleRollDice(event) {
     }
     else {
       switch (currentPlayer) {
+        // joueur 1
         case 1:
           //on incrémente le score à round player 1
           roundPlayer1 += dice;
           console.log("ceci est le score incrémenté du joueur 1: " + roundPlayer1);
           document.getElementById('roundPlayer1').innerHTML = roundPlayer1;
           break;
+        // joueur 2
         case 2:
           //on incrémente le score à round player 2
           roundPlayer2 += dice;
@@ -108,6 +107,7 @@ function handleHold(event) {
     if (globalPlayer1 < 100 && globalPlayer2 < 100) {
       // en fonction du joueur
       switch (currentPlayer) {
+        // joueur 1
         case 1:
           //on incrémente le score round à global du player 1
           globalPlayer1 += roundPlayer1;
@@ -116,6 +116,7 @@ function handleHold(event) {
           if (globalPlayer1 >= 100){
             alert('Congrats ! Player 1 wins 🏆');}
           break;
+        // joueur 2
         case 2:
         //on incrémente le score round à global du player 2
           globalPlayer2 += roundPlayer2;
@@ -128,6 +129,7 @@ function handleHold(event) {
       }
       // On change de joueur
       switchPlayer();
+      // FIn du jeu... QUi a gagné ???
     } else if (globalPlayer1 >= 100){
       alert('Congrats ! Player 1 wins 🏆');
     } else if (globalPlayer2 >= 100){
@@ -135,12 +137,9 @@ function handleHold(event) {
     }
   }  
 }
+// On ajouter un écouteur d'événement sur le bouton newGame
 document.getElementById('newGame').addEventListener('click', handleNewGame);
+// On ajouter un écouteur d'événement sur le bouton roll
 document.getElementById('roll').addEventListener('click', handleRollDice);
+// On ajouter un écouteur d'événement sur le bouton hold
 document.getElementById('hold').addEventListener('click', handleHold);
-
-
-
-// peut ajouter le score de round à global
-  // et passe la main
-
