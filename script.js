@@ -1,4 +1,24 @@
 
+function handleNewGame(event) {
+  
+  // A chaque nouvelle partie, round et global sont réinitialisés à 0
+  if (event.currentTarget.id === 'newGame') {
+    // définition du score temporaire ROUND
+    let roundPlayer1 = 0;
+    let roundPlayer2 = 0;
+    document.getElementById('roundPlayer1').innerHTML = roundPlayer1;
+    document.getElementById('roundPlayer2').innerHTML = roundPlayer2;
+    
+    // définition du score global GLOBAL2    // définition du score global GLOBAL
+    let globalPlayer1 = 0;
+    let globalPlayer2 = 0;   
+    document.getElementById('globalPlayer1').innerHTML = globalPlayer1;
+    document.getElementById('globalPlayer2').innerHTML = globalPlayer2;
+
+    // on ajoute la classe active sur le joueur 1 qui joue en premier
+    document.getElementById('player1').className = 'active';
+  }
+}
 
 // Obtient un nombre alétaoire entier entre 1 et 6 inclus
 function rollDice(min, max) {
