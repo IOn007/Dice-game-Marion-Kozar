@@ -1,22 +1,78 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeu de dés de Marion</title>
+  <title>Marion's Dice Game</title>
   <!-- Ajout du Framework minimaliste Pure -->
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
   <!-- Grille responsive de Pure -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-min.css">
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css">
   <!-- Mon style custom -->
   <link rel="stylesheet" href="style.css">
   <!-- Insertion de la font Lato -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body> 
+  <header>
+    <!-- Affichage du bouton Nouvelle partie -->
+    <button type="button" id="newGame" class="flex">
+      <img src="img/add.svg" alt="hold score" width="40px">
+      <h1>NEW GAME</h1>
+    </button>
+  </header>
   
+  <main class="pure-g flex">
+    <!-- Infos du joueur 1 -->
+    <section class="pure-u-1 pure-u-md-2-5"> 
+      <div class="flex">
+        <h2>PLAYER 1</h2><div class="active"></div>
+        </div>
+      <!-- Affichage du score global -->
+      <p id="globalPlayer1" class="global-score">43</p>    
+      <!-- affichage du score courrant -->
+      <div class="current">
+        <p>CURRENT</p> 
+        <span id="roundPlayer1">11</span>
+      </div> 
+    </section>
+    <!-- Options du tour -->
+    <section class="pure-u-1 pure-u-md-1-5 flex-col">
+      <!-- affichage du dé lancé -->
+      <div class=" dice-bg">
+        <img src="img/dice1.svg" alt="face du dé" width="auto">
+      </div>
+      <!-- Actions -->     
+      <div class="actions">
+        <!-- Lance le dé -->
+        <button id="roll" type="button" class="pure-u-1 flex">
+          <img src="img/recycle.svg" alt="roll dice" width="30px">
+          <h3>ROLL DICE</h3>
+        </button>
+        <!-- Conserve le score -->
+        <button id="hold" type="button" class="pure-u-1 flex">
+          <img src="img/hold.svg" alt="hold score" width="30px">
+          <h3>HOLD</h3>
+        </button>
+      </div>
+    </section>
+    <!-- Infos du joueur 2 -->
+    <section class="pure-u-1 pure-u-md-2-5">
+      <div class="flex">
+      <h2>PLAYER 2</h2>
+      </div>
+      <!-- Affichage du score global -->
+      <p id="globalPlayer2" class="global-score">72</p>   
+      <!-- affichage du score courrant -->
+      <div class="current">
+        <p>CURRENT</p> 
+        <span id="roundPlayer2">0</span>
+      </div>  
+    </section>    
+  </main>
 </body>
 </html>
