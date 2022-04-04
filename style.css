@@ -81,6 +81,15 @@ margin: 2em auto;
 .bold {
   font-weight: 300;
 }
+.active {
+  width: 0.75em;
+  height: 0.75em;
+  border: none;
+  background-color:#ff6666;
+  border-radius: 50px;
+  text-align: center;
+  margin: auto 5px;
+}
 
 @media screen and (min-width: 48em) {
   body {
@@ -98,15 +107,6 @@ margin: 2em auto;
     font-weight: 300;
     margin-block-end: 1.5em;
     margin-block-start: 0;
-  }
-  .active {
-    width: 0.75em;
-    height: 0.75em;
-    border: none;
-    background-color:#ff6666;
-    border-radius: 50px;
-    text-align: center;
-    margin: auto 5px;
   }
   .md-no-bg {
     background-color: transparent;
