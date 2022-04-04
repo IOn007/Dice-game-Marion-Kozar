@@ -34,6 +34,11 @@ function handleRollDice(event) {
     // peut lancer le dé 
     let dice = rollDice(1,6);
     console.log(dice);
+
+    // on affiche l'image du dé correspondant au tirage au sort
+    let diceImage = document.getElementById('dice');
+    diceImage.src = "img/dice" + dice + ".svg";
+    console.log(diceImage.src);
   }
 }
 
