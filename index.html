@@ -30,18 +30,18 @@
     <!-- Infos du joueur 1 -->
     <section class="pure-u-1 pure-u-md-2-5"> 
       <div class="flex">
-        <h2>PLAYER 1</h2><div class="active"></div>
+        <h2>PLAYER 1</h2><div id="player1" class="active"></div>
         </div>
       <!-- Affichage du score global -->
-      <p id="globalPlayer1" class="global-score">43</p>    
+      <p id="globalPlayer1" class="global-score">0</p>    
       <!-- affichage du score courrant -->
       <div class="current">
         <p>CURRENT</p> 
-        <span id="roundPlayer1">11</span>
+        <span id="roundPlayer1">0</span>
       </div> 
     </section>
     <!-- Options du tour -->
-    <section class="pure-u-1 pure-u-md-1-5 flex-col">
+    <section class="pure-u-1 pure-u-md-1-5 flex-col sm-bg md-no-bg">
       <!-- affichage du dé lancé -->
       <div class=" dice-bg">
         <img src="img/dice1.svg" alt="face du dé" width="auto">
@@ -63,7 +63,7 @@
     <!-- Infos du joueur 2 -->
     <section class="pure-u-1 pure-u-md-2-5">
       <div class="flex">
-      <h2>PLAYER 2</h2>
+      <h2>PLAYER 2</h2><div id="player2"></div>
       </div>
       <!-- Affichage du score global -->
       <p id="globalPlayer2" class="global-score">72</p>   
@@ -74,5 +74,6 @@
       </div>  
     </section>    
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
